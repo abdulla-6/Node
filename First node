@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+void buildLL();
+void deleteLL();
+void displayLL();
+struct node {
+	int info;
+	node* link;
+}; node* newnode, * first = NULL, * last = NULL, * temp;
+ 
+void buildLL()
+{
+	int num;
+	cout << "cin the num ";
+	cin >> num;
+	if (num != -1)
+	{
+		newnode = new node;
+		newnode->info = num;
+		newnode->link = NULL;
+		if (first == NULL)
+		{
+			first = newnode;
+			last = newnode;
+		}else
+		{
+			last->link = newnode;
+			last = newnode;
+		}
+ 
+	}
+ 
+ 
+}
+void displayLL()
+{
+	temp = first;
+ 
+	while (temp != NULL)
+	{
+		cout << "info = " << temp->info << "  link = " << temp->link <<"   ||  ";
+		temp = temp->link;
+	}
+	cout << "NULL" << endl;
+}
+void deleteLL()
+{
+	temp = first;
+	if (temp != NULL)
+	{
+		cout << "deleted node is " << temp->info << " link is " << temp->link;
+		first = first->link;
+ 
+		delete temp;
+		temp = first;
+	}
+ 
+}
+ 
+void main()
+ 
+{
+	int choice;
+	cout << "cin choice : ";
+	cin >> choice;
+	while (choice != -1)
+	{
+		switch (choice)
+		{
+ 
+		case 1: buildLL();
+			break;
+		case 2:
+			displayLL();
+			break;
+		case 3:
+			deleteLL();
+			break;
+		default:
+			cout << "not matched anything !";
+			break;
+		}
+		cout << "cin choice : ";
+		cin >> choice;
+ 
+	}
+}
